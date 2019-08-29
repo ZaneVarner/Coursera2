@@ -1,0 +1,24 @@
+<legend>
+  <h2>My Info</h2>
+</legend>
+
+<div class="my-info"
+  ng-if="!myInfoCtrl.submitted">
+  Not Signed Up Yet.
+  <a ui-sref="public.signup">Sign up Now!</a>
+</div>
+
+<div class="my-info"
+  ng-if="myInfoCtrl.submitted">
+  <div>Name: {{ myInfoCtrl.firstname }} {{ myInfoCtrl.lastname }}</div>
+  <div>Email: {{ myInfoCtrl.email }}</div>
+  <div>Phone: {{ myInfoCtrl.phone }}</div>
+  <br>
+  <div>Favorite Dish: {{ myInfoCtrl.favDish.name}}</div>
+  <div>
+    <img width="250" height="150"
+        src="{{myInfoCtrl.basePath}}/images/{{myInfoCtrl.favDish.short_name}}.jpg"
+        alt="{{myInfoCtrl.favDish.name}}">
+  </div>
+  <div>{{ myInfoCtrl.favDish.description }}</div>
+</div>

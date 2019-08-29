@@ -1,0 +1,73 @@
+<fieldset>
+  <legend>
+    <h2>Sign Up</h2>
+  </legend>
+
+  <form name='SignUpForm' novalidate>
+
+    <input type="text" name="firstname" placeholder="First Name"
+      ng-model="signUpCtrl.firstname"
+      required>
+    <div ng-if="SignUpForm.firstname.$error.required &&
+          SignUpForm.firstname.$touched">
+      First name is required.
+    </div>
+    <br>
+
+    <input type="text" name="lastname" placeholder="Last Name"
+      ng-model="signUpCtrl.lastname"
+      required>
+    <div ng-if="SignUpForm.lastname.$error.required
+          && SignUpForm.lastname.$touched">
+      Last name is required.
+    </div>
+    <br>
+
+    <input type="email" name="email" placeholder="Email"
+      ng-model="signUpCtrl.email"
+      required>
+    <div ng-if="SignUpForm.email.$error.required
+          && SignUpForm.email.$touched">
+      Email address is required.
+    </div>
+    <div ng-if="SignUpForm.email.$invalid
+          && SignUpForm.email.$touched">
+      Must be a valid email address (handle@domain).
+    </div>
+    <br>
+
+    <input type="text" name="phone" placeholder="Phone ###-###-####"
+      ng-model="signUpCtrl.phone"
+      pattern="(\d{3})-(\d{3})-(\d{4})"
+      required>
+    <div ng-if="SignUpForm.phone.$error.required
+          && SignUpForm.phone.$touched">
+      Phone number is required.
+    </div>
+    <div ng-if="SignUpForm.phone.$invalid
+          && SignUpForm.phone.$touched">
+      Phone must be in the format ###-###-####.
+    </div>
+    <br>
+
+    <input type="text" name="favDish" placeholder="Favorite Dish"
+      ng-model="signUpCtrl.favDishShortName"
+      required>
+    <div ng-if="SignUpForm.favDish.$error.required
+          && SignUpForm.favDish.$touched">
+      Favorite dish is required.
+    </div>
+    <br>
+
+    <button ng-disabled="SignUpForm.$invalid"
+      ng-click="signUpCtrl.submit(signUpCtrl.favDishShortName)">
+      Submit
+    </button>
+    <br>
+
+    <span>
+      {{ signUpCtrl.message }}
+    </span>
+
+  </form>
+</fieldset>
